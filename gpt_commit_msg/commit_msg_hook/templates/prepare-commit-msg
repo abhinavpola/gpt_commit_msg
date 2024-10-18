@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Call the Python script to generate a commit message
+COMMIT_MSG=$(python3 -m my_commit_hook.generate_commit_message)
+
+# If the commit message is not empty, use it
+if [ -n "$COMMIT_MSG" ]; then
+  echo "$COMMIT_MSG" > "$1"
+else
+  echo "Auto-generated commit message" > "$1"
+fi
